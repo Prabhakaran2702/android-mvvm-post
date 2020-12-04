@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/prabhakarand/Desktop/development/androidmvvmpost/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/post_item.xml",
+        "source": "/Users/prabhakarand/Desktop/development/androidmvvmpost/app/src/main/res/layout/post_item.xml"
+    },
+    {
+        "merged": "/Users/prabhakarand/Desktop/development/androidmvvmpost/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/comment_item.xml",
+        "source": "/Users/prabhakarand/Desktop/development/androidmvvmpost/app/src/main/res/layout/comment_item.xml"
+    },
+    {
+        "merged": "/Users/prabhakarand/Desktop/development/androidmvvmpost/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_detail.xml",
+        "source": "/Users/prabhakarand/Desktop/development/androidmvvmpost/app/src/main/res/layout/fragment_detail.xml"
+    },
+    {
+        "merged": "/Users/prabhakarand/Desktop/development/androidmvvmpost/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
+        "source": "/Users/prabhakarand/Desktop/development/androidmvvmpost/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/prabhakarand/Desktop/development/androidmvvmpost/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_post.xml",
+        "source": "/Users/prabhakarand/Desktop/development/androidmvvmpost/app/src/main/res/layout/fragment_post.xml"
+    },
+    {
+        "merged": "/Users/prabhakarand/Desktop/development/androidmvvmpost/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_favourites.xml",
+        "source": "/Users/prabhakarand/Desktop/development/androidmvvmpost/app/src/main/res/layout/fragment_favourites.xml"
+    }
+]
