@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.justclean_mvvm_post.R
 import com.example.justclean_mvvm_post.databinding.FragmentFavouritesBinding
 import com.example.justclean_mvvm_post.ui.adapter.PostListAdapter
+import com.example.justclean_mvvm_post.utils.Type
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class FavouritesFragment : Fragment() {
@@ -19,7 +20,7 @@ class FavouritesFragment : Fragment() {
 
     private lateinit var binding: FragmentFavouritesBinding
 
-    private val postsListAdapter = PostListAdapter(arrayListOf(),"F")
+    private val postsListAdapter = PostListAdapter(arrayListOf(),Type.FAVOURITES)
 
     override fun onCreateView(
             inflater: LayoutInflater,

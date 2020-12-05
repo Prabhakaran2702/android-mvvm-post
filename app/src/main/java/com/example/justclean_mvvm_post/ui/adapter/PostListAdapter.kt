@@ -12,9 +12,10 @@ import com.example.justclean_mvvm_post.data.model.Post
 import com.example.justclean_mvvm_post.databinding.PostItemBinding
 import com.example.justclean_mvvm_post.ui.favourites.FavouritesFragmentDirections
 import com.example.justclean_mvvm_post.ui.post.PostFragmentDirections
+import com.example.justclean_mvvm_post.utils.Type
 import kotlinx.android.synthetic.main.post_item.view.*
 
-class PostListAdapter(val postsList: ArrayList<Post>,val type:String) : RecyclerView.Adapter<PostListAdapter.PostViewHolder>(),
+class PostListAdapter(val postsList: ArrayList<Post>,val type: Type) : RecyclerView.Adapter<PostListAdapter.PostViewHolder>(),
     PostClickListener {
 
     class PostViewHolder(var view: PostItemBinding) : RecyclerView.ViewHolder(view.root)
@@ -42,7 +43,7 @@ class PostListAdapter(val postsList: ArrayList<Post>,val type:String) : Recycler
         val id = v.postid.text.toString().toInt()
 
 
-        if(type=="P"){
+        if(type==Type.POSTS){
             val action = PostFragmentDirections.actionNavigationPostToScrollingFragment()
             action.postId=id
             Navigation.findNavController(v).navigate(action)
@@ -52,8 +53,6 @@ class PostListAdapter(val postsList: ArrayList<Post>,val type:String) : Recycler
             action.postId=id
             Navigation.findNavController(v).navigate(action)
         }
-
-
 
     }
 
