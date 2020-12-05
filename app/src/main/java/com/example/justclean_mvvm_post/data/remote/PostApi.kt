@@ -12,7 +12,10 @@ interface PostApi {
     @GET("posts")
      fun getPosts(): Deferred<List<Post>>
 
+    @GET("posts/{id}")
+    fun getPost(@Path("id") id: Int): Deferred<Post>
+
     @GET("posts/{id}/comments")
-     fun getComments(@Path("id") id: Int): Single<List<Comment>>
+     fun getComments(@Path("id") id: Int): Deferred<List<Comment>>
 
 }

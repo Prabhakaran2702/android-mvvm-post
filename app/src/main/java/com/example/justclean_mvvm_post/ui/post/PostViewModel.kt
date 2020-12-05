@@ -51,7 +51,7 @@ class PostViewModel(private val repository: PostRepository) : ViewModel() {
         viewModelScope.launch {
 
             val array = arrayListOf<Post>()
-            array.addAll(repository.getPost())
+            array.addAll(repository.getPosts())
             _posts.value= array
             _loadError.value = false
             _loading.value = false
