@@ -6,15 +6,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.justclean_mvvm_post.data.model.Post
 import com.example.justclean_mvvm_post.data.repository.PostRepository
+import com.example.justclean_mvvm_post.utils.Util
 import kotlinx.coroutines.launch
 
 class PostViewModel(private val repository: PostRepository) : ViewModel() {
 
-    val _posts = MutableLiveData<ArrayList<Post>>()
-    val _loadError = MutableLiveData<Boolean>().apply {
+    private val _posts = MutableLiveData<ArrayList<Post>>()
+    private val _loadError = MutableLiveData<Boolean>().apply {
         value =false
     }
-    val _loading = MutableLiveData<Boolean>().apply {
+    private val _loading = MutableLiveData<Boolean>().apply {
         value = true
     }
 
@@ -24,29 +25,7 @@ class PostViewModel(private val repository: PostRepository) : ViewModel() {
     val loading: LiveData<Boolean> = _loading
 
 
-    init {
-
-       // loadDummy()
-
-        fetchData()
-
-    }
-
-
-    fun loadDummy(){
-
-        val list: ArrayList<Post> = ArrayList()
-        list.add(Post(1,1,"Title1","body"))
-        list.add(Post(1,1,"Title2","body"))
-        list.add(Post(1,1,"Title3","body"))
-        _posts.value=list
-        _loadError.value = false
-        _loading.value = false
-
-    }
-
-
-    fun fetchData(){
+     fun fetchData(){
 
         viewModelScope.launch {
 

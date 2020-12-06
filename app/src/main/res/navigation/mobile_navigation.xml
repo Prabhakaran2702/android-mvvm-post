@@ -33,6 +33,9 @@
             android:name="postId"
             android:defaultValue="0"
             app:argType="integer" />
+        <argument
+            android:name="isFavouriteView"
+            app:argType="boolean" />
     </fragment>
 
 </navigation>

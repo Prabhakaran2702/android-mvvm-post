@@ -14,8 +14,9 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
     }
 
     buildTypes {
@@ -84,6 +85,8 @@ dependencies {
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
 
+    implementation "com.squareup.okhttp3:logging-interceptor:4.0.1"
 
+    implementation "com.android.support:multidex:1.0.3"
 
 }

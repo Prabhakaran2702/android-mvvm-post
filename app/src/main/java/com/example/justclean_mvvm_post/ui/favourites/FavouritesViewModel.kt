@@ -3,39 +3,41 @@ package com.example.justclean_mvvm_post.ui.favourites
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.justclean_mvvm_post.data.model.Favourite
 import com.example.justclean_mvvm_post.data.model.Post
+import com.example.justclean_mvvm_post.data.repository.FavouriteRepository
+import com.example.justclean_mvvm_post.data.repository.PostRepository
+import kotlinx.coroutines.launch
 
-class FavouritesViewModel : ViewModel() {
+class FavouritesViewModel(private val repository: FavouriteRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is favourites Fragment"
-    }
 
-    val posts = MutableLiveData<ArrayList<Post>>().apply {   var p = Post(1,1,"Title","body")
-        value?.add(p)
-    }
-    val loadError = MutableLiveData<Boolean>().apply {
+    private val _posts = MutableLiveData<ArrayList<Favourite>>()
+    private val _loadError = MutableLiveData<Boolean>().apply {
         value =false
     }
-    val loading = MutableLiveData<Boolean>().apply {
+    private val _loading = MutableLiveData<Boolean>().apply {
         value = true
     }
 
-    val text: LiveData<String> = _text
-
-    init {
-        loadDummy()
-    }
+    val posts: LiveData<ArrayList<Favourite>> = _posts
+    val loadError: LiveData<Boolean> = _loadError
+    val loading: LiveData<Boolean> = _loading
 
 
-    fun loadDummy(){
 
-        val list: ArrayList<Post> = ArrayList()
-        list.add(Post(1,1,"Title1","body"))
+     fun fetchData(){
 
-        posts.value=list
-        loadError.value = false
-        loading.value = false
+        viewModelScope.launch {
+
+            val array = arrayListOf<Favourite>()
+            array.addAll(repository.getFavourites())
+            _posts.value= array
+            _loadError.value = false
+            _loading.value = false
+
+        }
 
     }
 

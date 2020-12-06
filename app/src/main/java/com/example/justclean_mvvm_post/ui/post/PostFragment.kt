@@ -22,15 +22,8 @@ class PostFragment : Fragment() {
 
     private lateinit var binding: FragmentPostBinding
 
-    private val postsListAdapter = PostListAdapter(arrayListOf(),Type.POSTS)
+    private val postsListAdapter = PostListAdapter(arrayListOf())
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        observerData()
-
-    }
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -55,7 +48,6 @@ class PostFragment : Fragment() {
             binding.postList.visibility = View.GONE
             binding. listError.visibility = View.GONE
             binding. loadingView.visibility = View.VISIBLE
-           // viewModel.refreshBypassCache()
             binding. refreshLayout.isRefreshing = false
         }
 
@@ -64,23 +56,27 @@ class PostFragment : Fragment() {
         val navBar: BottomNavigationView = requireActivity().findViewById(R.id.nav_view)
         navBar.visibility=View.VISIBLE
 
+        observerData()
+
+        viewModel.fetchData()
+
     }
 
     private fun observerData() {
-        viewModel.posts.observe(this, Observer {post ->
+        viewModel.posts.observe(viewLifecycleOwner, Observer {post ->
             post?.let {
                 binding.postList.visibility = View.VISIBLE
                 postsListAdapter.updatePostList(post)
             }
         })
 
-        viewModel.loadError.observe(this, Observer {isError ->
+        viewModel.loadError.observe(viewLifecycleOwner, Observer {isError ->
             isError?.let {
                 binding. listError.visibility = if(it) View.VISIBLE else View.GONE
             }
         })
 
-        viewModel.loading.observe(this, Observer { isLoading ->
+        viewModel.loading.observe(viewLifecycleOwner, Observer { isLoading ->
             isLoading?.let {
                 binding. loadingView.visibility = if(it) View.VISIBLE else View.GONE
                 if(it) {

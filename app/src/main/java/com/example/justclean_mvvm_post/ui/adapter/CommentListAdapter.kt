@@ -14,13 +14,13 @@ class CommentListAdapter (val commentsList: ArrayList<Comment>) : RecyclerView.A
 
     class CommentViewHolder(var view: CommentItemBinding) : RecyclerView.ViewHolder(view.root)
 
-         fun updateCommentList(commentList: ArrayList<Comment>) {
-             commentList.clear()
-             commentList.addAll(commentList)
+         fun updateCommentList(list: ArrayList<Comment>) {
+             commentsList.clear()
+             commentsList.addAll(list)
              notifyDataSetChanged()
          }
 
-         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentListAdapter.CommentViewHolder {
+         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
              val inflater = LayoutInflater.from(parent.context)
              val view = CommentItemBinding.inflate(inflater,parent, false)
              return CommentViewHolder(view)

@@ -10,28 +10,30 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.justclean_mvvm_post.R
 import com.example.justclean_mvvm_post.databinding.FragmentFavouritesBinding
+import com.example.justclean_mvvm_post.ui.adapter.FavouriteListAdapter
 import com.example.justclean_mvvm_post.ui.adapter.PostListAdapter
+import com.example.justclean_mvvm_post.ui.post.PostViewModel
 import com.example.justclean_mvvm_post.utils.Type
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class FavouritesFragment : Fragment() {
 
-    private lateinit var viewModel: FavouritesViewModel
+
+
+    private val viewModel: FavouritesViewModel by viewModel<FavouritesViewModel>()
 
     private lateinit var binding: FragmentFavouritesBinding
 
-    private val postsListAdapter = PostListAdapter(arrayListOf(),Type.FAVOURITES)
+    private val postsListAdapter = FavouriteListAdapter(arrayListOf())
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        viewModel =
-                ViewModelProviders.of(this).get(FavouritesViewModel::class.java)
 
         binding=FragmentFavouritesBinding.inflate(inflater, container, false)
-
 
         return binding.root
     }
@@ -49,7 +51,6 @@ class FavouritesFragment : Fragment() {
             binding.postList.visibility = View.GONE
             binding. listError.visibility = View.GONE
             binding. loadingView.visibility = View.VISIBLE
-            // viewModel.refreshBypassCache()
             binding. refreshLayout.isRefreshing = false
         }
 
@@ -57,6 +58,8 @@ class FavouritesFragment : Fragment() {
 
         val navBar: BottomNavigationView = requireActivity().findViewById(R.id.nav_view)
         navBar.visibility=View.VISIBLE
+
+        viewModel.fetchData()
 
     }
 
