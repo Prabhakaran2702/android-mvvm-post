@@ -16,6 +16,8 @@ import com.example.justclean_mvvm_post.ui.adapter.PostListAdapter
 import com.example.justclean_mvvm_post.ui.post.PostViewModel
 import com.example.justclean_mvvm_post.utils.Type
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -77,12 +79,16 @@ class DetailFragment : Fragment() {
                     viewModel.deleteFavourite(_post.id)
                     isFavouriteAdded=false
 
+                    showSnack("Post removed from favourite")
+
                 }
                 else{
 
                     binding.addFav.setImageResource(R.drawable.ic_baseline_favorite_24)
                     viewModel.addFavourite(Favourite(_post.id,_post.userId,_post.title,_post.body))
                     isFavouriteAdded=true
+
+                    showSnack("Post added as favourite")
 
                 }
 
@@ -114,6 +120,14 @@ class DetailFragment : Fragment() {
     private fun hideBottomNav(){
         val navBar: BottomNavigationView = requireActivity().findViewById(R.id.nav_view)
         navBar.visibility=View.GONE
+    }
+
+    private fun showSnack(msg:String){
+
+       val snackBar = Snackbar.make(binding.container, msg, Snackbar.LENGTH_LONG)
+        snackBar?.duration = BaseTransientBottomBar.LENGTH_SHORT
+        snackBar?.show()
+
     }
 
 }

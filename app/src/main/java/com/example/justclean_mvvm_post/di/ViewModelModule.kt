@@ -6,7 +6,7 @@ import com.example.justclean_mvvm_post.ui.post.PostViewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
-    single { PostViewModel(get()) }
-    single { FavouritesViewModel(get()) }
+    single { PostViewModel(get(),get()) }
+    single { FavouritesViewModel(get(),get()) }
     single { DetailViewModel(get(),get()) }
 }

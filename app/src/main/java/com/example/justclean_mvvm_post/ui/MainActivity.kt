@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity(),NetworkChangeReceiver.ConnectivityRecei
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
+    private var count=0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -48,7 +50,8 @@ class MainActivity : AppCompatActivity(),NetworkChangeReceiver.ConnectivityRecei
     }
 
     override fun onNetworkConnectionChanged(isConnected: Boolean) {
-        showNetworkMessage(isConnected)
+      if(count>0) {showNetworkMessage(isConnected)}
+        count++
     }
 
     private fun showNetworkMessage(isConnected: Boolean) {

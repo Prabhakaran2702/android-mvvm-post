@@ -49,6 +49,9 @@ class PostFragment : Fragment() {
             binding. listError.visibility = View.GONE
             binding. loadingView.visibility = View.VISIBLE
             binding. refreshLayout.isRefreshing = false
+
+            viewModel.fetchData()
+
         }
 
 

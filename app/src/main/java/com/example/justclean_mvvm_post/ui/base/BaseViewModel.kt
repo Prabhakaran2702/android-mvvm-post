@@ -1,4 +1,4 @@
-package com.example.justclean_mvvm_post
+package com.example.justclean_mvvm_post.ui.base
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
